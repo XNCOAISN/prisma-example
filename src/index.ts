@@ -9,6 +9,7 @@ prisma.$on("query", (e) => {
 
 async function main() {
   const user = await prisma.user.findUnique({
+    relationLoadStrategy: "join",
     where: { email: "alice@prisma.io" },
     include: {
       posts: true,
